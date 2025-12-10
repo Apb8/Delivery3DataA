@@ -1,0 +1,17 @@
+delivery 3- 11 enero
+
+teoria cosas sobre el arpu
+if u join this tables what is the result etc
+how to filter calculations etc
+et diu un joc i dir quines coses analitzaries
+at the end something like delivery 2 (A/B test) --> sembla molt semblant al examen q ens va passar
+
+-------
+
+Crear php para recoger los datos de muertes kills etc
+mandarlos al server y crear database
+volver a coger esos datos extraídos y marcarlos en el editor mismo con cubos de colores o similar por el mapa
+cuando más muertes haya el color del cubo se vuelve mas intenso (p.ej. cuantas mas muertes el cubo es mas rojo)
+luego enseñar eso en la entrega,. no hace falta presentarlo ni nada
+no hara falta usar tableau tampoco para hacer los heatmaps con ponerlo como he dicho en el editor ya esta bien
+el package q estamos usando tiene algunos warnings pero nvm
