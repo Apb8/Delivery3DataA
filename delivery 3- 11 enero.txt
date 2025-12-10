@@ -1,10 +1,4 @@
-delivery 3- 11 enero
 
-teoria cosas sobre el arpu
-if u join this tables what is the result etc
-how to filter calculations etc
-et diu un joc i dir quines coses analitzaries
-at the end something like delivery 2 (A/B test) --> sembla molt semblant al examen q ens va passar
 
 -------
 
@@ -15,3 +9,18 @@ cuando más muertes haya el color del cubo se vuelve mas intenso (p.ej. cuantas 
 luego enseñar eso en la entrega,. no hace falta presentarlo ni nada
 no hara falta usar tableau tampoco para hacer los heatmaps con ponerlo como he dicho en el editor ya esta bien
 el package q estamos usando tiene algunos warnings pero nvm
+
+kpis
+muertes
+kills
+quien muere, quien ha matado al enemigo
+mapa de calor de cada fase del tutorial?
+del ultimo del tuto cuanta gente muere --> muertes
+cuantos cubos se han roto, cuales se han roto
+los enemigos: que enemigo causa más muertes, cual causa menos, cual es mas difícil de matar
+en q charcos de acido se muere, en q zonas se muere mas
+
+tendremos que juagr nosotros unas cuantas veces para recoger los datos
+podemos hacer un poco de trampa y en alguno de esos trys mandamos otro player id para hacer ver q han jugado varias personas
+hacer los 'heatmap' en una escena duplicada
+cuando entreguemos hacer tmb un documento explicando lo q hemos encontrado, rollo readme, lo q hay en la escena duplicada con los heatmap para q no se le escape nada al corregir
