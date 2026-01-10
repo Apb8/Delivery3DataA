@@ -5,7 +5,7 @@ using System.Text;
 public class GameMetricsSender : MonoBehaviour
 {
     [Header("API Configuration")]
-    public string apiURL = "http://citmalumnes.upc.es/~hugocc2/game_metrics_api.php"; //mirar si aixo esta be
+    public string apiURL = "https://citmalumnes.upc.es/~hugocc2/game_analytics.php"; //mirar si aixo esta be
 
     [Header("Player Info")]
     public string playerID = "anonymous";

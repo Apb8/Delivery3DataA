@@ -165,6 +165,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chomper
       objectReference: {fileID: 0}
+    - target: {fileID: 1722084123150156, guid: e9569c7e13e51264082910415a120d38, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4111328061247126, guid: e9569c7e13e51264082910415a120d38, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2124,6 +2128,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -2189,10 +2197,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 69479601}
     - targetCorrespondingSourceObject: {fileID: 1887259239855848, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
         type: 3}
       insertIndex: -1
@@ -2223,26 +2227,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 69479596}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &69479600 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-    type: 3}
-  m_PrefabInstance: {fileID: 69479596}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &69479601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69479600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711a5cd469ec6a94981aeb5cf3d7129f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubeType: wood
-  zoneName: Center_Bottom
 --- !u!43 &80694407
 Mesh:
   m_ObjectHideFlags: 0
@@ -2694,6 +2678,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2742,10 +2730,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 92664325}
     - targetCorrespondingSourceObject: {fileID: 1887259239855848, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
         type: 3}
       insertIndex: -1
@@ -2776,26 +2760,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 92664320}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &92664324 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-    type: 3}
-  m_PrefabInstance: {fileID: 92664320}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &92664325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 92664324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711a5cd469ec6a94981aeb5cf3d7129f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubeType: wood
-  zoneName: Center_Bottom
 --- !u!1 &93654368
 GameObject:
   m_ObjectHideFlags: 0
@@ -3571,6 +3535,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -3618,11 +3586,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 165636586}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
 --- !u!4 &165636584 stripped
 Transform:
@@ -3630,26 +3594,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 165636583}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &165636585 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-    type: 3}
-  m_PrefabInstance: {fileID: 165636583}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &165636586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 165636585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711a5cd469ec6a94981aeb5cf3d7129f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubeType: wood
-  zoneName: Center_Entry
 --- !u!1001 &176904822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3661,6 +3605,10 @@ PrefabInstance:
     - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_Name
       value: DestructibleBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
@@ -3713,11 +3661,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 176904825}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
 --- !u!4 &176904823 stripped
 Transform:
@@ -3725,26 +3669,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 176904822}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &176904824 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-    type: 3}
-  m_PrefabInstance: {fileID: 176904822}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &176904825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 176904824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711a5cd469ec6a94981aeb5cf3d7129f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubeType: wood
-  zoneName: Side_L
 --- !u!1001 &177736045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3760,6 +3684,10 @@ PrefabInstance:
     - target: {fileID: 1722084123150156, guid: e9569c7e13e51264082910415a120d38, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1722084123150156, guid: e9569c7e13e51264082910415a120d38, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4111328061247126, guid: e9569c7e13e51264082910415a120d38, type: 3}
       propertyPath: m_RootOrder
@@ -7211,6 +7139,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1343745363}
     m_Modifications:
+    - target: {fileID: 1722084123150156, guid: e9569c7e13e51264082910415a120d38, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4111328061247126, guid: e9569c7e13e51264082910415a120d38, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -8885,6 +8817,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -8932,11 +8868,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 288430886}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
 --- !u!4 &288430884 stripped
 Transform:
@@ -8944,26 +8876,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 288430883}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &288430885 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-    type: 3}
-  m_PrefabInstance: {fileID: 288430883}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &288430886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 288430885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711a5cd469ec6a94981aeb5cf3d7129f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubeType: wood
-  zoneName: Corner_EntryR
 --- !u!1001 &290888066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9281,6 +9193,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1343745363}
     m_Modifications:
+    - target: {fileID: 1500461124768838, guid: 3ac2dd7eaceaa504dbb1b175fcef06a2, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4121626901829952, guid: 3ac2dd7eaceaa504dbb1b175fcef06a2, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -9751,6 +9667,10 @@ PrefabInstance:
     - target: {fileID: 1722084123150156, guid: e9569c7e13e51264082910415a120d38, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1722084123150156, guid: e9569c7e13e51264082910415a120d38, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4111328061247126, guid: e9569c7e13e51264082910415a120d38, type: 3}
       propertyPath: m_RootOrder
@@ -11975,6 +11895,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -12022,11 +11946,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 495038369}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
 --- !u!4 &495038367 stripped
 Transform:
@@ -12034,26 +11954,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 495038366}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &495038368 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-    type: 3}
-  m_PrefabInstance: {fileID: 495038366}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &495038369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 495038368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711a5cd469ec6a94981aeb5cf3d7129f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubeType: wood
-  zoneName: Building_Side
 --- !u!1001 &515403437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12544,6 +12444,10 @@ PrefabInstance:
     - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_Name
       value: DestructibleBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
@@ -13671,6 +13575,10 @@ PrefabInstance:
     - target: {fileID: 1722084123150156, guid: e9569c7e13e51264082910415a120d38, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1722084123150156, guid: e9569c7e13e51264082910415a120d38, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4111328061247126, guid: e9569c7e13e51264082910415a120d38, type: 3}
       propertyPath: m_RootOrder
@@ -16210,6 +16118,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -16269,11 +16181,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 684614418}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
 --- !u!4 &684614416 stripped
 Transform:
@@ -16281,26 +16189,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 684614415}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &684614417 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-    type: 3}
-  m_PrefabInstance: {fileID: 684614415}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &684614418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 684614417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711a5cd469ec6a94981aeb5cf3d7129f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubeType: wood
-  zoneName: Building_Side
 --- !u!1001 &684797484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16316,6 +16204,10 @@ PrefabInstance:
     - target: {fileID: 1722084123150156, guid: e9569c7e13e51264082910415a120d38, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1722084123150156, guid: e9569c7e13e51264082910415a120d38, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4111328061247126, guid: e9569c7e13e51264082910415a120d38, type: 3}
       propertyPath: m_RootOrder
@@ -16553,6 +16445,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -16612,11 +16508,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 720263653}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
 --- !u!4 &720263651 stripped
 Transform:
@@ -16624,26 +16516,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 720263650}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &720263652 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-    type: 3}
-  m_PrefabInstance: {fileID: 720263650}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &720263653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 720263652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711a5cd469ec6a94981aeb5cf3d7129f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubeType: wood
-  zoneName: Side_L
 --- !u!4 &724535808 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4851426095153388, guid: 6bd94cdd1484b2841a02028ad605dfda,
@@ -19266,6 +19138,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1722084123150156, guid: e9569c7e13e51264082910415a120d38, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4111328061247126, guid: e9569c7e13e51264082910415a120d38, type: 3}
       propertyPath: m_RootOrder
       value: 33
@@ -20563,6 +20439,10 @@ PrefabInstance:
     - target: {fileID: 1558230472247936, guid: 64b1837b1cd40d541944cde538b260fe, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558230472247936, guid: 64b1837b1cd40d541944cde538b260fe, type: 3}
+      propertyPath: m_TagString
+      value: AcidLake
       objectReference: {fileID: 0}
     - target: {fileID: 4010392149475408, guid: 64b1837b1cd40d541944cde538b260fe, type: 3}
       propertyPath: m_LocalScale.x
@@ -23199,6 +23079,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -23264,10 +23148,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 971634572}
     - targetCorrespondingSourceObject: {fileID: 1887259239855848, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
         type: 3}
       insertIndex: -1
@@ -23298,26 +23178,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 971634567}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &971634571 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-    type: 3}
-  m_PrefabInstance: {fileID: 971634567}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &971634572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 971634571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711a5cd469ec6a94981aeb5cf3d7129f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubeType: wood
-  zoneName: Corner_BottomL
 --- !u!1 &974797767
 GameObject:
   m_ObjectHideFlags: 0
@@ -23386,6 +23246,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -23433,11 +23297,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1009156201}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
 --- !u!4 &1009156199 stripped
 Transform:
@@ -23445,26 +23305,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1009156198}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1009156200 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-    type: 3}
-  m_PrefabInstance: {fileID: 1009156198}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1009156201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1009156200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711a5cd469ec6a94981aeb5cf3d7129f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubeType: wood
-  zoneName: Building_Side
 --- !u!43 &1016346031
 Mesh:
   m_ObjectHideFlags: 0
@@ -23768,6 +23608,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -23833,10 +23677,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1042858254}
     - targetCorrespondingSourceObject: {fileID: 1887259239855848, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
         type: 3}
       insertIndex: -1
@@ -23867,26 +23707,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1042858249}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1042858253 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-    type: 3}
-  m_PrefabInstance: {fileID: 1042858249}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1042858254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042858253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711a5cd469ec6a94981aeb5cf3d7129f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubeType: wood
-  zoneName: Center_Bottom
 --- !u!4 &1061872613 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4823830900955444, guid: ae81845ceb8900c4db0f8898c8c098e5,
@@ -24623,6 +24443,10 @@ PrefabInstance:
     - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_Name
       value: DestructibleBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
@@ -140855,6 +140679,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -140910,11 +140738,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1153712405}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
 --- !u!4 &1153712403 stripped
 Transform:
@@ -140922,26 +140746,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1153712402}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1153712404 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-    type: 3}
-  m_PrefabInstance: {fileID: 1153712402}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1153712405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1153712404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711a5cd469ec6a94981aeb5cf3d7129f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubeType: wood
-  zoneName: Side_L
 --- !u!1001 &1170385991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -141056,6 +140860,10 @@ PrefabInstance:
     - target: {fileID: 1722084123150156, guid: e9569c7e13e51264082910415a120d38, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1722084123150156, guid: e9569c7e13e51264082910415a120d38, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4111328061247126, guid: e9569c7e13e51264082910415a120d38, type: 3}
       propertyPath: m_RootOrder
@@ -141568,6 +141376,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 28
       objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 1809450308328134, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_Layer
       value: 28
@@ -141624,10 +141436,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1190791868}
     - targetCorrespondingSourceObject: {fileID: 1887259239855848, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
         type: 3}
       insertIndex: -1
@@ -141639,26 +141447,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1190791865}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1190791867 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-    type: 3}
-  m_PrefabInstance: {fileID: 1190791865}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1190791868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190791867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711a5cd469ec6a94981aeb5cf3d7129f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubeType: wood
-  zoneName: Building_Side
 --- !u!1001 &1198019405
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -141670,6 +141458,10 @@ PrefabInstance:
     - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_Name
       value: DestructibleBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
       objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
@@ -141730,11 +141522,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1198019408}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
 --- !u!4 &1198019406 stripped
 Transform:
@@ -141742,26 +141530,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1198019405}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1198019407 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-    type: 3}
-  m_PrefabInstance: {fileID: 1198019405}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1198019408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1198019407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711a5cd469ec6a94981aeb5cf3d7129f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubeType: wood
-  zoneName: Building_Side
 --- !u!43 &1199938096
 Mesh:
   m_ObjectHideFlags: 0
@@ -142808,6 +142576,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -142856,10 +142628,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1271557958}
     - targetCorrespondingSourceObject: {fileID: 1887259239855848, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
         type: 3}
       insertIndex: -1
@@ -142871,26 +142639,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1271557955}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1271557957 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-    type: 3}
-  m_PrefabInstance: {fileID: 1271557955}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1271557958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1271557957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711a5cd469ec6a94981aeb5cf3d7129f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubeType: wood
-  zoneName: Building_Side
 --- !u!114 &1276223756 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114393665823712450, guid: 114c5f41fd4099445a42c1d9bd01f222,
@@ -142918,6 +142666,10 @@ PrefabInstance:
     - target: {fileID: 1500461124768838, guid: 3ac2dd7eaceaa504dbb1b175fcef06a2, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500461124768838, guid: 3ac2dd7eaceaa504dbb1b175fcef06a2, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4121626901829952, guid: 3ac2dd7eaceaa504dbb1b175fcef06a2, type: 3}
       propertyPath: m_RootOrder
@@ -143007,6 +142759,10 @@ PrefabInstance:
     - target: {fileID: 1558230472247936, guid: 64b1837b1cd40d541944cde538b260fe, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558230472247936, guid: 64b1837b1cd40d541944cde538b260fe, type: 3}
+      propertyPath: m_TagString
+      value: AcidLake
       objectReference: {fileID: 0}
     - target: {fileID: 4010392149475408, guid: 64b1837b1cd40d541944cde538b260fe, type: 3}
       propertyPath: m_LocalScale.x
@@ -151998,6 +151754,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1722084123150156, guid: e9569c7e13e51264082910415a120d38, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4111328061247126, guid: e9569c7e13e51264082910415a120d38, type: 3}
       propertyPath: m_RootOrder
       value: 29
@@ -152377,6 +152137,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1722084123150156, guid: e9569c7e13e51264082910415a120d38, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4111328061247126, guid: e9569c7e13e51264082910415a120d38, type: 3}
       propertyPath: m_RootOrder
       value: 32
@@ -152544,6 +152308,10 @@ PrefabInstance:
     - target: {fileID: 1558230472247936, guid: 64b1837b1cd40d541944cde538b260fe, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558230472247936, guid: 64b1837b1cd40d541944cde538b260fe, type: 3}
+      propertyPath: m_TagString
+      value: AcidLake
       objectReference: {fileID: 0}
     - target: {fileID: 4010392149475408, guid: 64b1837b1cd40d541944cde538b260fe, type: 3}
       propertyPath: m_LocalScale.x
@@ -153007,6 +152775,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1722084123150156, guid: e9569c7e13e51264082910415a120d38, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4111328061247126, guid: e9569c7e13e51264082910415a120d38, type: 3}
       propertyPath: m_RootOrder
       value: 39
@@ -153115,15 +152887,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4405054866690174, guid: 1fac0dae54de3224181696b709bb4d66, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.00000047683716
+      value: 22.840008
       objectReference: {fileID: 0}
     - target: {fileID: 4405054866690174, guid: 1fac0dae54de3224181696b709bb4d66, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.8800001
+      value: -6.9929976
       objectReference: {fileID: 0}
     - target: {fileID: 4405054866690174, guid: 1fac0dae54de3224181696b709bb4d66, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.999998
+      value: 62.059998
       objectReference: {fileID: 0}
     - target: {fileID: 4405054866690174, guid: 1fac0dae54de3224181696b709bb4d66, type: 3}
       propertyPath: m_LocalRotation.w
@@ -153604,6 +153376,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1500461124768838, guid: 3ac2dd7eaceaa504dbb1b175fcef06a2, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4121626901829952, guid: 3ac2dd7eaceaa504dbb1b175fcef06a2, type: 3}
       propertyPath: m_RootOrder
       value: 27
@@ -153725,6 +153501,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1135619350}
     m_Modifications:
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -154081,6 +153861,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 252219576}
     m_Modifications:
+    - target: {fileID: 1558230472247936, guid: 64b1837b1cd40d541944cde538b260fe, type: 3}
+      propertyPath: m_TagString
+      value: AcidLake
+      objectReference: {fileID: 0}
     - target: {fileID: 4010392149475408, guid: 64b1837b1cd40d541944cde538b260fe, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -154194,6 +153978,10 @@ PrefabInstance:
     - target: {fileID: 1722084123150156, guid: e9569c7e13e51264082910415a120d38, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1722084123150156, guid: e9569c7e13e51264082910415a120d38, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4111328061247126, guid: e9569c7e13e51264082910415a120d38, type: 3}
       propertyPath: m_RootOrder
@@ -154941,6 +154729,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1558230472247936, guid: 64b1837b1cd40d541944cde538b260fe, type: 3}
+      propertyPath: m_TagString
+      value: AcidLake
+      objectReference: {fileID: 0}
     - target: {fileID: 4920300329419138, guid: 64b1837b1cd40d541944cde538b260fe, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -155093,6 +154885,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -155150,10 +154946,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1794738804}
     - targetCorrespondingSourceObject: {fileID: 1887259239855848, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
         type: 3}
       insertIndex: -1
@@ -155184,26 +154976,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1794738799}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1794738803 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-    type: 3}
-  m_PrefabInstance: {fileID: 1794738799}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1794738804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1794738803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711a5cd469ec6a94981aeb5cf3d7129f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubeType: wood
-  zoneName: Side_L
 --- !u!1001 &1799358006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -155409,6 +155181,10 @@ PrefabInstance:
     - target: {fileID: 1722084123150156, guid: e9569c7e13e51264082910415a120d38, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1722084123150156, guid: e9569c7e13e51264082910415a120d38, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4111328061247126, guid: e9569c7e13e51264082910415a120d38, type: 3}
       propertyPath: m_RootOrder
@@ -156520,6 +156296,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1722084123150156, guid: e9569c7e13e51264082910415a120d38, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4111328061247126, guid: e9569c7e13e51264082910415a120d38, type: 3}
       propertyPath: m_RootOrder
       value: 35
@@ -156644,6 +156424,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1722084123150156, guid: e9569c7e13e51264082910415a120d38, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4111328061247126, guid: e9569c7e13e51264082910415a120d38, type: 3}
       propertyPath: m_RootOrder
       value: 31
@@ -156729,6 +156513,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -156789,10 +156577,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1867643515}
     - targetCorrespondingSourceObject: {fileID: 1887259239855848, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
         type: 3}
       insertIndex: -1
@@ -156804,26 +156588,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1867643512}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1867643514 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-    type: 3}
-  m_PrefabInstance: {fileID: 1867643512}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1867643515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1867643514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711a5cd469ec6a94981aeb5cf3d7129f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubeType: wood
-  zoneName: Building_Side
 --- !u!1 &1870165114 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1514188031708152, guid: 64b1837b1cd40d541944cde538b260fe,
@@ -156963,6 +156727,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -157010,11 +156778,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1911332077}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
 --- !u!4 &1911332075 stripped
 Transform:
@@ -157022,26 +156786,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1911332074}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1911332076 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-    type: 3}
-  m_PrefabInstance: {fileID: 1911332074}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1911332077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1911332076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711a5cd469ec6a94981aeb5cf3d7129f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubeType: wood
-  zoneName: Building_Side
 --- !u!43 &1913151521
 Mesh:
   m_ObjectHideFlags: 0
@@ -160174,6 +159918,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -160233,11 +159981,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2032588553}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
 --- !u!4 &2032588551 stripped
 Transform:
@@ -160245,26 +159989,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2032588550}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2032588552 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-    type: 3}
-  m_PrefabInstance: {fileID: 2032588550}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2032588553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2032588552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711a5cd469ec6a94981aeb5cf3d7129f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubeType: wood
-  zoneName: Building_Side
 --- !u!1 &2034418527 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1991219941496362, guid: 9d620787554a948e3876fe7dbdba24e8,
@@ -162201,6 +161925,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -162642,6 +162370,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -162707,10 +162439,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2109009567}
     - targetCorrespondingSourceObject: {fileID: 1887259239855848, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
         type: 3}
       insertIndex: -1
@@ -162741,26 +162469,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2109009562}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2109009566 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-    type: 3}
-  m_PrefabInstance: {fileID: 2109009562}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2109009567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109009566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711a5cd469ec6a94981aeb5cf3d7129f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubeType: wood
-  zoneName: Center_Bottom
 --- !u!43 &2113380703
 Mesh:
   m_ObjectHideFlags: 0
@@ -162941,6 +162649,10 @@ PrefabInstance:
     - target: {fileID: 1558230472247936, guid: 64b1837b1cd40d541944cde538b260fe, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558230472247936, guid: 64b1837b1cd40d541944cde538b260fe, type: 3}
+      propertyPath: m_TagString
+      value: AcidLake
       objectReference: {fileID: 0}
     - target: {fileID: 4010392149475408, guid: 64b1837b1cd40d541944cde538b260fe, type: 3}
       propertyPath: m_LocalScale.x
@@ -163254,6 +162966,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestructibleBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
+      propertyPath: m_TagString
+      value: Destructible
+      objectReference: {fileID: 0}
     - target: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -163301,11 +163017,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2115916949}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be, type: 3}
 --- !u!4 &2115916947 stripped
 Transform:
@@ -163313,26 +163025,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2115916946}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2115916948 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1564851569484282, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
-    type: 3}
-  m_PrefabInstance: {fileID: 2115916946}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2115916949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2115916948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711a5cd469ec6a94981aeb5cf3d7129f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubeType: wood
-  zoneName: Building_Inside
 --- !u!4 &2129182159 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4330284469158708, guid: 7a87b73c9eb3b0f42bd28e2e20aba3be,
