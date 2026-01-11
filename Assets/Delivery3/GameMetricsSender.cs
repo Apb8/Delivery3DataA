@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
-using System.Text;
 
 public class GameMetricsSender : MonoBehaviour
 {
     [Header("API Configuration")]
-    public string apiURL = "https://citmalumnes.upc.es/~hugocc2/game_analytics.php"; //mirar si aixo esta be
+    // Updated to point to game_analytics.php as requested
+    public string apiURL = "http://citmalumnes.upc.es/~hugocc2/game_analytics.php";
 
     [Header("Player Info")]
     public string playerID = "anonymous";
@@ -13,154 +14,164 @@ public class GameMetricsSender : MonoBehaviour
 
     void Start()
     {
-        // Generar IDs unicos
+        // Force the correct URL in code to prevent Inspector overriding it with old values
+        apiURL = "http://citmalumnes.upc.es/~hugocc2/game_analytics.php";
+
+        // Generate unique IDs
         playerID = SystemInfo.deviceUniqueIdentifier;
         if (string.IsNullOrEmpty(playerID))
         {
-            playerID = "player_" + Random.Range(10000, 99999);
+            if (PlayerPrefs.HasKey("PlayerID"))
+            {
+                playerID = PlayerPrefs.GetString("PlayerID");
+            }
+            else
+            {
+                playerID = "player_" + Random.Range(10000, 99999);
+                PlayerPrefs.SetString("PlayerID", playerID);
+            }
         }
 
         sessionID = "session_" + System.DateTime.Now.Ticks;
-
-        // Iniciar sesion en la base de datos
-        StartCoroutine(StartGameSession());
+        Debug.Log($"[Metrics] Session Started: {sessionID}");
     }
 
-    // ==================== METODOS PUBLICOS ====================
+    // ==================== PUBLIC METHODS ====================
 
     public void RecordPlayerDeath(string deathCause, Vector3 position, string zoneName = "")
     {
-        StartCoroutine(SendMetric("player_death", new
-        {
-            player_id = playerID,
-            session_id = sessionID,
-            death_cause = deathCause,
-            position_x = position.x,
-            position_y = position.y,
-            position_z = position.z,
-            zone_name = zoneName,
-            level_name = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
-        }));
+        StartCoroutine(PostDeath(deathCause, position, zoneName));
     }
 
     public void RecordTutorialDeath(string tutorialPhase, string deathCause, bool completed = false)
     {
-        StartCoroutine(SendMetric("tutorial_death", new
-        {
-            player_id = playerID,
-            tutorial_phase = tutorialPhase,
-            death_cause = deathCause,
-            completed = completed
-        }));
+        StartCoroutine(PostTutorial(tutorialPhase, deathCause, completed));
     }
 
     public void RecordCubeDestroyed(string cubeType, Vector3 position, string zoneName = "")
     {
-        StartCoroutine(SendMetric("cube_destroyed", new
-        {
-            cube_type = cubeType,
-            position_x = position.x,
-            position_y = position.y,
-            position_z = position.z,
-            zone_name = zoneName,
-            session_id = sessionID
-        }));
+        StartCoroutine(PostCube(cubeType, position, zoneName));
     }
 
     public void RecordEnemyKilled(string enemyType, float timeToKill, float damageDealt = 0)
     {
-        StartCoroutine(SendMetric("enemy_killed", new
-        {
-            enemy_type = enemyType,
-            time_to_kill = timeToKill,
-            damage_dealt = damageDealt,
-            player_id = playerID
-        }));
+        StartCoroutine(PostEnemy(enemyType, timeToKill, damageDealt));
     }
 
     public void RecordAcidLakeDeath(string lakeName, Vector3 position, string zoneName = "")
     {
-        StartCoroutine(SendMetric("player_death", new
-        {
-            player_id = playerID,
-            session_id = sessionID,
-            death_cause = "acido",
-            lake_name = lakeName,
-            position_x = position.x,
-            position_y = position.y,
-            position_z = position.z,
-            zone_name = zoneName
-        }));
+        // For acid lakes, we send a normal death but include the lake_name
+        StartCoroutine(PostDeath("acido", position, zoneName, lakeName));
     }
 
-    // ==================== METODO PRIVADO PRINCIPAL ====================
+    // ==================== COROUTINES (SENDING DATA) ====================
 
-    private IEnumerator SendMetric(string metricType, object data)
+    IEnumerator PostDeath(string cause, Vector3 pos, string zone, string lake = "")
     {
-        // Crear objeto con tipo de metrica
-        var metricData = new
+        WWWForm form = new WWWForm();
+        form.AddField("metric_type", "player_death"); // Required by PHP
+        
+        // Data fields
+        form.AddField("player_id", playerID);
+        form.AddField("death_cause", cause);
+        form.AddField("position_x", pos.x.ToString().Replace(',', '.'));
+        form.AddField("position_y", pos.y.ToString().Replace(',', '.'));
+        form.AddField("position_z", pos.z.ToString().Replace(',', '.'));
+        form.AddField("zone_name", zone);
+        form.AddField("level_name", UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        
+        if (!string.IsNullOrEmpty(lake))
         {
-            metric_type = metricType,
-            timestamp = System.DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")
-        };
-
-        // Combinar datos
-        var combinedData = new System.Dynamic.ExpandoObject();
-        var combinedDict = (System.Collections.Generic.IDictionary<string, object>)combinedData;
-
-        // Añadir metric_type primero
-        combinedDict["metric_type"] = metricType;
-
-        // Añadir timestamp
-        combinedDict["timestamp"] = System.DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
-
-        // Añadir datos especificos usando reflexion
-        foreach (var prop in data.GetType().GetProperties())
-        {
-            combinedDict[prop.Name] = prop.GetValue(data, null);
+            form.AddField("lake_name", lake);
         }
 
-        // Convertir a JSON
-        string json = JsonUtility.ToJson(combinedData);
-
-        // Enviar a la API
-        byte[] postData = Encoding.UTF8.GetBytes(json);
-
-        var headers = new System.Collections.Generic.Dictionary<string, string>();
-        headers.Add("Content-Type", "application/json");
-
-        WWW request = new WWW(apiURL, postData, headers); //actualitzar aixo!!
-        yield return request;
-
-        if (!string.IsNullOrEmpty(request.error))
+        using (UnityWebRequest www = UnityWebRequest.Post(apiURL, form))
         {
-            Debug.LogWarning($"Error sending metric {metricType}: {request.error}");
-        }
-        else
-        {
-            Debug.Log($"Metric {metricType} sent successfully: {request.text}");
+            yield return www.SendWebRequest();
+
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogWarning($"[Metrics Error] Player Death: {www.error} - {www.downloadHandler.text}");
+            }
+            else
+            {
+                Debug.Log($"[Metrics Success] Player Death recorded: {www.downloadHandler.text}");
+            }
         }
     }
 
-    private IEnumerator StartGameSession()
+    IEnumerator PostTutorial(string phase, string cause, bool completed)
     {
-        // Podriem afegir aqui un endpoint especific para iniciar sesiones
-        Debug.Log($"Game session started: Player={playerID}, Session={sessionID}");
-        yield return null;
+        WWWForm form = new WWWForm();
+        form.AddField("metric_type", "tutorial_death");
+        
+        form.AddField("player_id", playerID);
+        form.AddField("tutorial_phase", phase);
+        form.AddField("death_cause", cause);
+        form.AddField("completed", completed ? "1" : "0");
+
+        using (UnityWebRequest www = UnityWebRequest.Post(apiURL, form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogWarning($"[Metrics Error] Tutorial: {www.error}");
+            }
+            else
+            {
+                Debug.Log($"[Metrics Success] Tutorial recorded: {www.downloadHandler.text}");
+            }
+        }
     }
 
-    void OnApplicationQuit()
+    IEnumerator PostCube(string type, Vector3 pos, string zone)
     {
-        // Registrar endsession (opcional)
-        Debug.Log($"Game session ended: {sessionID}");
-    }
-}
+        WWWForm form = new WWWForm();
+        form.AddField("metric_type", "cube_destroyed");
+        
+        form.AddField("cube_type", type);
+        form.AddField("position_x", pos.x.ToString().Replace(',', '.'));
+        form.AddField("position_y", pos.y.ToString().Replace(',', '.'));
+        form.AddField("position_z", pos.z.ToString().Replace(',', '.'));
+        form.AddField("zone_name", zone);
 
-// Clase auxiliar para seriaklizacion
-public static class JsonHelper
-{
-    public static string ToJson(object obj)
+        using (UnityWebRequest www = UnityWebRequest.Post(apiURL, form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogWarning($"[Metrics Error] Cube: {www.error}");
+            }
+            else
+            {
+                Debug.Log($"[Metrics Success] Cube recorded: {www.downloadHandler.text}");
+            }
+        }
+    }
+
+    IEnumerator PostEnemy(string type, float time, float damage)
     {
-        return JsonUtility.ToJson(obj);
+        WWWForm form = new WWWForm();
+        form.AddField("metric_type", "enemy_killed");
+        
+        form.AddField("enemy_type", type);
+        form.AddField("time_to_kill", time.ToString().Replace(',', '.'));
+        form.AddField("damage_dealt", damage.ToString().Replace(',', '.'));
+
+        using (UnityWebRequest www = UnityWebRequest.Post(apiURL, form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogWarning($"[Metrics Error] Enemy: {www.error}");
+            }
+            else
+            {
+                Debug.Log($"[Metrics Success] Enemy recorded: {www.downloadHandler.text}");
+            }
+        }
     }
 }

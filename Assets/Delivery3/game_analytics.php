@@ -27,7 +27,7 @@ if ($conn->connect_error) {
 }
 
 // Obtener datos POST
-$input = json_decode(file_get_contents('php://input'), true);
+$input = $_POST;
 
 // ==============================================
 // ENDPOINT: Registrar muerte del jugador
