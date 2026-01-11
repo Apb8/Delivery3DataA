@@ -268,38 +268,42 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
     
     // Endpoint: Cubos destruidos
-    elseif (isset($_GET['get_cube_positions'])) {
-        $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 100;
-        
-        $query = "
-            SELECT 
-                ROUND(position_x, 1) as grid_x,
-                ROUND(position_z, 1) as grid_z,
-                COUNT(*) as destruction_count,
-                cube_type
-            FROM destructible_cubes
-            GROUP BY grid_x, grid_z, cube_type
-            ORDER BY destruction_count DESC
-            LIMIT $limit
-        ";
-        
-        $result = $conn->query($query);
-        
-        if (!$result) {
-            echo json_encode(["success" => false, "error" => "Query failed: " . $conn->error]);
-            exit;
-        }
-        
-        $data = [];
-        while ($row = $result->fetch_assoc()) {
-            $data[] = $row;
-        }
-        
-        echo json_encode([
-            "success" => true,
-            "cube_positions" => $data
-        ]);
+    elseif (isset($_GET['get_cube_positions_grouped'])) {
+    $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 100;
+    $threshold = isset($_GET['threshold']) ? floatval($_GET['threshold']) : 2.0; // Distancia para agrupar
+    
+    $query = "
+        SELECT 
+            ROUND(position_x) as grid_x,
+            ROUND(position_z) as grid_z,
+            COUNT(*) as total_destructions,
+            GROUP_CONCAT(cube_type SEPARATOR ', ') as cube_types,
+            ROUND(AVG(position_y), 1) as avg_y
+        FROM destructible_cubes
+        GROUP BY grid_x, grid_z
+        HAVING total_destructions > 0
+        ORDER BY total_destructions DESC
+        LIMIT $limit
+    ";
+    
+    $result = $conn->query($query);
+    
+    if (!$result) {
+        echo json_encode(["success" => false, "error" => "Query failed: " . $conn->error]);
+        exit;
     }
+    
+    $data = [];
+    while ($row = $result->fetch_assoc()) {
+        $data[] = $row;
+    }
+    
+    echo json_encode([
+        "success" => true,
+        "cube_positions" => $data,
+        "note" => "Agrupado por posición redondeada, sumando todas las destrucciones"
+    ]);
+}
         
         // Total general
         $query_total = "SELECT COUNT(*) as total_cubes, SUM(destruction_count) as total_destructions FROM destructible_cubes";

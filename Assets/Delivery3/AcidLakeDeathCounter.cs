@@ -191,8 +191,6 @@ public class AcidLakeDeathCounter : MonoBehaviour
         textMesh.anchor = TextAnchor.MiddleCenter;
         textMesh.alignment = TextAlignment.Center;
         
-        textObj.AddComponent<LookAtCamera>();
-        
         textObjects.Add(textObj);
     }
     

@@ -3,54 +3,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
 
-public class CubeDestructionMap : MonoBehaviour
+public class SimpleCubeGrouped : MonoBehaviour
 {
     private string apiURL = "http://citmalumnes.upc.es/~hugocc2/game_analytics.php";
     
     [Header("Configuración")]
     public KeyCode toggleKey = KeyCode.Alpha2;
     public int fontSize = 15;
+    public float textHeight = 2f;
     
-    private List<GameObject> visibleTexts = new List<GameObject>();
-    private bool isShowing = false;
+    private List<GameObject> textObjects = new List<GameObject>();
+    private bool isVisible = false;
     
     void Update()
     {
         if (Input.GetKeyDown(toggleKey))
         {
-            if (!isShowing)
-            {
-                ShowCubeCounts();
-            }
-            else
-            {
-                HideCubeCounts();
-            }
+            ToggleDisplay();
         }
     }
     
-    void ShowCubeCounts()
+    void ToggleDisplay()
     {
-        isShowing = true;
-        StartCoroutine(LoadAndShow());
-    }
-    
-    void HideCubeCounts()
-    {
-        isShowing = false;
+        isVisible = !isVisible;
         
-        foreach (GameObject text in visibleTexts)
+        if (isVisible)
         {
-            if (text != null) 
-                text.SetActive(false);
+            ShowCounters();
+        }
+        else
+        {
+            HideCounters();
         }
     }
     
-    IEnumerator LoadAndShow()
+    void ShowCounters()
     {
+        StartCoroutine(LoadGroupedData());
+    }
+    
+    IEnumerator LoadGroupedData()
+    {
+        // Limpiar anteriores
         ClearTexts();
         
-        string url = apiURL + "?get_cube_positions=1&limit=50";
+        string url = apiURL + "?get_cube_positions_grouped=1&limit=50";
         
         using (UnityWebRequest www = UnityWebRequest.Get(url))
         {
@@ -58,151 +55,151 @@ public class CubeDestructionMap : MonoBehaviour
             
             if (www.result == UnityWebRequest.Result.Success)
             {
-                Debug.Log("Datos de cubos recibidos");
-                CreateTextsFromResponse(www.downloadHandler.text);
+                ProcessData(www.downloadHandler.text);
             }
             else
             {
-                Debug.LogWarning("Error cargando cubos. Usando datos de prueba.");
-                CreateTestTexts();
+                Debug.Log("Error, mostrando datos agrupados de prueba");
+                CreateGroupedTestData();
             }
         }
     }
     
-    void CreateTextsFromResponse(string json)
+    void ProcessData(string json)
     {
         try
         {
-            int startIndex = json.IndexOf("\"cube_positions\":[");
+            // Parseo simple
+            // Buscar: "cube_positions":[{...},{...}]
+            int start = json.IndexOf("\"cube_positions\":[") + "\"cube_positions\":[".Length;
+            int end = json.LastIndexOf("]");
             
-            if (startIndex > 0)
+            if (start > "\"cube_positions\":[".Length && end > start)
             {
-                startIndex += "\"cube_positions\":[".Length;
-                int endIndex = json.LastIndexOf("]");
+                string array = json.Substring(start, end - start);
+                string[] items = array.Split(new string[] {"},"}, System.StringSplitOptions.RemoveEmptyEntries);
                 
-                if (endIndex > startIndex)
+                foreach (string item in items)
                 {
-                    string arrayStr = json.Substring(startIndex, endIndex - startIndex);
-                    string[] items = arrayStr.Split(new string[] {"},"}, System.StringSplitOptions.RemoveEmptyEntries);
-                    
-                    foreach (string item in items)
-                    {
-                        ParseAndCreateText(item);
-                    }
-                    
-                    Debug.Log($"Creados {visibleTexts.Count} contadores de cubos");
-                    return;
+                    ParseItem(item);
                 }
+                
+                Debug.Log($"Mostrando {textObjects.Count} contadores agrupados");
+                return;
             }
-            
-            CreateTestTexts();
         }
-        catch (System.Exception e)
+        catch
         {
-            Debug.LogError("Error parseando cubos: " + e.Message);
-            CreateTestTexts();
+            // Si falla, crear datos de prueba
         }
+        
+        CreateGroupedTestData();
     }
     
-    void ParseAndCreateText(string item)
+    void ParseItem(string item)
     {
-        string cleanItem = item.Replace("{", "").Replace("}", "").Replace("\"", "").Trim();
+        string clean = item.Replace("{", "").Replace("}", "").Replace("\"", "").Trim();
         
-        if (string.IsNullOrEmpty(cleanItem)) return;
+        if (string.IsNullOrEmpty(clean)) return;
         
-        float x = 0, z = 0;
+        float x = 0, z = 0, y = 2f;
         int count = 0;
-        string type = "";
         
-        string[] parts = cleanItem.Split(',');
+        string[] parts = clean.Split(',');
         foreach (string part in parts)
         {
-            string[] keyValue = part.Split(':');
-            if (keyValue.Length >= 2)
+            string[] kv = part.Split(':');
+            if (kv.Length >= 2)
             {
-                string key = keyValue[0].Trim();
-                string value = keyValue[1].Trim();
+                string key = kv[0].Trim();
+                string value = kv[1].Trim();
                 
-                switch (key)
+                if (key == "grid_x" || key == "position_x")
                 {
-                    case "grid_x":
-                        float.TryParse(value, System.Globalization.NumberStyles.Any,
-                            System.Globalization.CultureInfo.InvariantCulture, out x);
-                        x = x / 10f;
-                        break;
-                        
-                    case "grid_z":
-                        float.TryParse(value, System.Globalization.NumberStyles.Any,
-                            System.Globalization.CultureInfo.InvariantCulture, out z);
-                        z = z / 10f;
-                        break;
-                        
-                    case "destruction_count":
-                        int.TryParse(value, out count);
-                        break;
-                        
-                    case "cube_type":
-                        type = value;
-                        break;
+                    if (float.TryParse(value, System.Globalization.NumberStyles.Any,
+                        System.Globalization.CultureInfo.InvariantCulture, out float val))
+                    {
+                        x = val / 10f; // Dividir por 10
+                    }
+                }
+                else if (key == "grid_z" || key == "position_z")
+                {
+                    if (float.TryParse(value, System.Globalization.NumberStyles.Any,
+                        System.Globalization.CultureInfo.InvariantCulture, out float val))
+                    {
+                        z = val / 10f; // Dividir por 10
+                    }
+                }
+                else if (key == "avg_y" || key == "position_y")
+                {
+                    if (float.TryParse(value, System.Globalization.NumberStyles.Any,
+                        System.Globalization.CultureInfo.InvariantCulture, out float val))
+                    {
+                        y = (val / 10f) + 1f; // Dividir por 10 y añadir altura
+                    }
+                }
+                else if (key == "total_destructions" || key == "destruction_count" || key == "count")
+                {
+                    int.TryParse(value, out count);
                 }
             }
         }
         
         if (count > 0)
         {
-            CreateTextAtPosition(x, z, count, type);
+            CreateText(x, y, z, count);
         }
     }
     
-    void CreateTextAtPosition(float x, float z, int count, string type)
+    void CreateText(float x, float y, float z, int count)
     {
-        Vector3 position = new Vector3(x, 2f, z);
+        Vector3 position = new Vector3(x, y + 1f, z); // Altura
         
-        GameObject textObj = new GameObject("CubeCounterText");
+        GameObject textObj = new GameObject("CubeGrouped");
         textObj.transform.position = position;
         
-        TextMesh textMesh = textObj.AddComponent<TextMesh>();
-        textMesh.text = $"×{count}";
-        textMesh.fontSize = fontSize;
-        textMesh.color = GetColorForType(type);
-        textMesh.anchor = TextAnchor.MiddleCenter;
-        textMesh.alignment = TextAlignment.Center;
+        TextMesh tm = textObj.AddComponent<TextMesh>();
+        tm.text = $"×{count}";
+        tm.fontSize = fontSize;
+        tm.color = new Color(0, 0.5f, 1f); // Azul
+        tm.anchor = TextAnchor.MiddleCenter;
         
-        textObj.AddComponent<LookAtCamera>();
+        // Hacer que mire a la cámara
+        textObj.AddComponent<SimpleLookAt>();
         
-        visibleTexts.Add(textObj);
+        textObjects.Add(textObj);
     }
     
-    Color GetColorForType(string type)
+    void CreateGroupedTestData()
     {
-        type = type.ToLower();
+        // Datos de prueba AGRUPADOS
+        // Misma posición = suma automática
         
-        if (type.Contains("wood")) return new Color(0.6f, 0.3f, 0.1f);
-        if (type.Contains("stone")) return Color.gray;
-        if (type.Contains("metal")) return Color.cyan;
-        if (type.Contains("glass")) return new Color(0.8f, 0.9f, 1f);
+        // Posición (10, 2, 5) con 3 destrucciones + 2 destrucciones = 5 total
+        CreateText(10f, 2f, 5f, 5);  // ×5
         
-        return Color.blue;
+        // Posición (-5, 1, 8) con 1 destrucción
+        CreateText(-5f, 1f, 8f, 1);  // ×1
+        
+        // Posición (3, 0, -7) con 5 destrucciones + 3 destrucciones = 8 total
+        CreateText(3f, 0f, -7f, 8);  // ×8
+        
+        Debug.Log("Mostrando datos agrupados de prueba");
     }
     
-    void CreateTestTexts()
+    void HideCounters()
     {
-        CreateTextAtPosition(10f, 5f, 3, "wood");
-        CreateTextAtPosition(-5f, 8f, 1, "stone");
-        CreateTextAtPosition(3f, -7f, 5, "metal");
-        CreateTextAtPosition(-8f, -4f, 2, "wood");
-        
-        Debug.Log("Creados 4 contadores de prueba");
-    }
-    
-    void ClearTexts()
-    {
-        foreach (GameObject text in visibleTexts)
+        foreach (GameObject text in textObjects)
         {
             if (text != null)
                 Destroy(text);
         }
-        visibleTexts.Clear();
+        textObjects.Clear();
+    }
+    
+    void ClearTexts()
+    {
+        HideCounters();
     }
     
     void OnDestroy()
@@ -211,14 +208,13 @@ public class CubeDestructionMap : MonoBehaviour
     }
 }
 
-public class LookAtCamera : MonoBehaviour
+public class SimpleLookAt : MonoBehaviour
 {
     void Update()
     {
         if (Camera.main != null)
         {
-            transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.forward,
-                           Camera.main.transform.rotation * Vector3.up);
+            transform.rotation = Camera.main.transform.rotation;
         }
     }
 }
