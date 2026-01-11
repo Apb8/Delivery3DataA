@@ -268,23 +268,38 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
     
     // Endpoint: Cubos destruidos
-    elseif (isset($_GET['get_cube_stats'])) {
-        // Cubos por tipo
-        $query_cubes = "
+    elseif (isset($_GET['get_cube_positions'])) {
+        $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 100;
+        
+        $query = "
             SELECT 
-                cube_type,
-                COUNT(*) as total_cubes,
-                SUM(destruction_count) as total_destructions
+                ROUND(position_x, 1) as grid_x,
+                ROUND(position_z, 1) as grid_z,
+                COUNT(*) as destruction_count,
+                cube_type
             FROM destructible_cubes
-            GROUP BY cube_type
-            ORDER BY total_destructions DESC
+            GROUP BY grid_x, grid_z, cube_type
+            ORDER BY destruction_count DESC
+            LIMIT $limit
         ";
         
-        $result_cubes = $conn->query($query_cubes);
-        $cube_stats = [];
-        while ($row = $result_cubes->fetch_assoc()) {
-            $cube_stats[] = $row;
+        $result = $conn->query($query);
+        
+        if (!$result) {
+            echo json_encode(["success" => false, "error" => "Query failed: " . $conn->error]);
+            exit;
         }
+        
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        
+        echo json_encode([
+            "success" => true,
+            "cube_positions" => $data
+        ]);
+    }
         
         // Total general
         $query_total = "SELECT COUNT(*) as total_cubes, SUM(destruction_count) as total_destructions FROM destructible_cubes";
