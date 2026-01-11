@@ -9821,9 +9821,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b163a6e11718d54a88e05e5c3d37e0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileSize: 2
-  maxHeight: 8
-  use3DColumns: 1
+  baseHeight: 3.59
+  maxHeight: 12.42
+  use3DHeight: 1
+  globalOpacity: 0.6
   heatmapGradient:
     serializedVersion: 2
     key0: {r: 0, g: 1, b: 0, a: 1}
@@ -9854,8 +9855,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  gridPrecision: 5
-  maxTiles: 200
+  gridPrecision: 30
   autoLoadOnStart: 1
   reloadInterval: 30
 --- !u!4 &457869680
@@ -9867,7 +9867,7 @@ Transform:
   m_GameObject: {fileID: 457869678}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.450825, y: 63.459187, z: -5.501765}
+  m_LocalPosition: {x: 1, y: 1, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
