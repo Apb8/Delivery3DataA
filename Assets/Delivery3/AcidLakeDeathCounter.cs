@@ -7,7 +7,7 @@ public class AcidLakeDeathCounter : MonoBehaviour
 {
     private string apiURL = "http://citmalumnes.upc.es/~hugocc2/game_analytics.php";
     
-    [Header("Configuración")]
+    [Header("Configuration")]
     public KeyCode toggleKey = KeyCode.Alpha3;
     public int fontSize = 15;
     public float textHeight = 3f;
@@ -54,7 +54,7 @@ public class AcidLakeDeathCounter : MonoBehaviour
             
             if (www.result == UnityWebRequest.Result.Success)
             {
-                Debug.Log("Datos de lagos recibidos");
+                Debug.Log("Datos de acid lakes recibidos");
                 CreateTextsFromResponse(www.downloadHandler.text);
             }
             else
@@ -85,7 +85,7 @@ public class AcidLakeDeathCounter : MonoBehaviour
                         ParseAndCreateText(item);
                     }
                     
-                    Debug.Log($"Creados {textObjects.Count} contadores de lagos");
+                    //Debug.Log($"Creados {textObjects.Count} contadores de lagos");
                     return;
                 }
             }

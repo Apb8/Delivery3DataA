@@ -7,7 +7,7 @@ public class SimpleCubeGrouped : MonoBehaviour
 {
     private string apiURL = "http://citmalumnes.upc.es/~hugocc2/game_analytics.php";
     
-    [Header("Configuración")]
+    [Header("Configuracion")]
     public KeyCode toggleKey = KeyCode.Alpha2;
     public int fontSize = 15;
     public float textHeight = 2f;
@@ -59,7 +59,7 @@ public class SimpleCubeGrouped : MonoBehaviour
             }
             else
             {
-                Debug.Log("Error, mostrando datos agrupados de prueba");
+                //Debug.Log("Error, mostrando datos d prueba");
                 CreateGroupedTestData();
             }
         }
@@ -68,9 +68,7 @@ public class SimpleCubeGrouped : MonoBehaviour
     void ProcessData(string json)
     {
         try
-        {
-            // Parseo simple
-            // Buscar: "cube_positions":[{...},{...}]
+        {            
             int start = json.IndexOf("\"cube_positions\":[") + "\"cube_positions\":[".Length;
             int end = json.LastIndexOf("]");
             
@@ -135,7 +133,7 @@ public class SimpleCubeGrouped : MonoBehaviour
                     if (float.TryParse(value, System.Globalization.NumberStyles.Any,
                         System.Globalization.CultureInfo.InvariantCulture, out float val))
                     {
-                        y = (val / 10f) + 1f; // Dividir por 10 y añadir altura
+                        y = (val / 10f) + 1f; // Dividir por 10 y add altura
                     }
                 }
                 else if (key == "total_destructions" || key == "destruction_count" || key == "count")
@@ -153,7 +151,7 @@ public class SimpleCubeGrouped : MonoBehaviour
     
     void CreateText(float x, float y, float z, int count)
     {
-        Vector3 position = new Vector3(x, y + 1f, z); // Altura
+        Vector3 position = new Vector3(x, y + 1f, z);
         
         GameObject textObj = new GameObject("CubeGrouped");
         textObj.transform.position = position;
@@ -163,8 +161,7 @@ public class SimpleCubeGrouped : MonoBehaviour
         tm.fontSize = fontSize;
         tm.color = new Color(0, 0.5f, 1f); // Azul
         tm.anchor = TextAnchor.MiddleCenter;
-        
-        // Hacer que mire a la cámara
+                
         textObj.AddComponent<SimpleLookAt>();
         
         textObjects.Add(textObj);
@@ -173,15 +170,15 @@ public class SimpleCubeGrouped : MonoBehaviour
     void CreateGroupedTestData()
     {
         // Datos de prueba AGRUPADOS
-        // Misma posición = suma automática
+        // Misma pos = suma auto
         
-        // Posición (10, 2, 5) con 3 destrucciones + 2 destrucciones = 5 total
+        // Pos (10, 2, 5) con 3 destrucciones + 2 destrucciones = 5 total
         CreateText(10f, 2f, 5f, 5);  // ×5
         
-        // Posición (-5, 1, 8) con 1 destrucción
+        // Pos (-5, 1, 8) con 1 destruccion
         CreateText(-5f, 1f, 8f, 1);  // ×1
         
-        // Posición (3, 0, -7) con 5 destrucciones + 3 destrucciones = 8 total
+        // Pos (3, 0, -7) con 5 destrucciones + 3 destrucciones = 8 total
         CreateText(3f, 0f, -7f, 8);  // ×8
         
         Debug.Log("Mostrando datos agrupados de prueba");

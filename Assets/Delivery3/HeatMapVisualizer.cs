@@ -9,8 +9,8 @@ public class HeatmapVisualizer : MonoBehaviour
     private string apiURL = "http://citmalumnes.upc.es/~hugocc2/game_analytics.php";
 
     [Header("Heatmap Visuals")]
-    public float baseHeight = 1f; // <--- NUEVO: Altura base (el "suelo" del heatmap)
-    public float maxHeight = 10f; // Altura extra de los picos
+    public float baseHeight = 1f;
+    public float maxHeight = 10f;
     public bool use3DHeight = true; 
     
     [Range(0f, 1f)]
@@ -195,15 +195,14 @@ public class HeatmapVisualizer : MonoBehaviour
 
                 int count = data.ContainsKey(key) ? data[key] : 0;
                 float normalized = maxVal > 0 ? (float)count / maxVal : 0;
-
-                // Color y Opacidad
+                                
                 Color c = heatmapGradient.Evaluate(normalized);
                 c.a *= globalOpacity;
                 colors[index] = c;
 
-                // --- CÁLCULO DE ALTURA CORREGIDO A Y=1 ---
-                // Si es 3D: baseHeight + altura calculada
-                // Si es Plano: baseHeight fijo
+                //CALCULO DE ALTURA CORREGIDO A Y=1
+                // si es 3D: baseHeight + altura calculada
+                // si es plano: baseHeight fijo
                 float yOffset = use3DHeight ? (normalized * maxHeight) : 0f;
                 float finalY = baseHeight + yOffset;
                 
@@ -249,8 +248,7 @@ public class HeatmapVisualizer : MonoBehaviour
     void CreateLegend(int maxDeaths)
     {
         GameObject legend = new GameObject("LegendInfo");
-        legend.transform.SetParent(heatmapContainer.transform);
-        // Ponemos la leyenda un poco por encima del pico más alto
+        legend.transform.SetParent(heatmapContainer.transform);        
         legend.transform.localPosition = new Vector3(0, baseHeight + maxHeight + 2, 0);
         
         TextMesh tm = legend.AddComponent<TextMesh>();
@@ -264,7 +262,7 @@ public class HeatmapVisualizer : MonoBehaviour
 
     void CreateTestHeatmap()
     {
-        Debug.Log("Generando datos de prueba...");
+        //Debug.Log("Generando datos de prueba");
         List<DeathPoint> points = new List<DeathPoint>();
         for (int i = 0; i < 300; i++) {
             points.Add(new DeathPoint { 

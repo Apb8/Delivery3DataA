@@ -3,7 +3,7 @@ using Gamekit3D;
 
 public class EnemyDamageTracker : MonoBehaviour
 {
-    public string enemyType = "zombie";
+    public string enemyType = "spitter";
     public string zoneName = "Unknown";
 
     private GameMetricsSender metrics;

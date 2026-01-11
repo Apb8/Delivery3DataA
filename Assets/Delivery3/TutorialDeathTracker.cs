@@ -22,12 +22,12 @@
 //    {
 //        if (other.CompareTag("Player"))
 //        {
-//            // Cuando el jugador entra en esta zona del tutorial
+//            
 //            Debug.Log($"Player in tutorial phase: {tutorialPhase}");
 //        }
 //    }
 
-//    // llamar cuando el jugador muera en el tutorial
+//    
 //    public void RecordTutorialDeath(bool completed = false)
 //    {
 //        if (metrics != null)
@@ -39,7 +39,7 @@
 //        }
 //    }
 
-//    // llamar cuando complete el tutorial
+//    
 //    public void CompleteTutorial()
 //    {
 //        RecordTutorialDeath(true);

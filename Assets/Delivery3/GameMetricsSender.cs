@@ -4,8 +4,7 @@ using System.Collections;
 
 public class GameMetricsSender : MonoBehaviour
 {
-    [Header("API Configuration")]
-    // Updated to point to game_analytics.php as requested
+    [Header("API Configuration")]    
     public string apiURL = "http://citmalumnes.upc.es/~hugocc2/game_analytics.php";
 
     [Header("Player Info")]
@@ -13,11 +12,9 @@ public class GameMetricsSender : MonoBehaviour
     public string sessionID;
 
     void Start()
-    {
-        // Force the correct URL in code to prevent Inspector overriding it with old values
+    {        
         apiURL = "http://citmalumnes.upc.es/~hugocc2/game_analytics.php";
-
-        // Generate unique IDs
+                
         playerID = SystemInfo.deviceUniqueIdentifier;
         if (string.IsNullOrEmpty(playerID))
         {
@@ -35,8 +32,7 @@ public class GameMetricsSender : MonoBehaviour
         sessionID = "session_" + System.DateTime.Now.Ticks;
         Debug.Log($"[Metrics] Session Started: {sessionID}");
     }
-
-    // ==================== PUBLIC METHODS ====================
+        
 
     public void RecordPlayerDeath(string deathCause, Vector3 position, string zoneName = "")
     {
@@ -64,7 +60,7 @@ public class GameMetricsSender : MonoBehaviour
         StartCoroutine(PostDeath("acido", position, zoneName, lakeName));
     }
 
-    // ==================== COROUTINES (SENDING DATA) ====================
+    // COROUTINES
 
     IEnumerator PostDeath(string cause, Vector3 pos, string zone, string lake = "")
     {

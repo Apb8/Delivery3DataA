@@ -12,13 +12,13 @@ public class DestructibleCubeTracker : MonoBehaviour
 
     private GameMetricsSender metrics;
     private Damageable cubeDamageable;
-    private Transform parentPrefab; // Referencia al prefab padre
+    private Transform parentPrefab;
 
     void Start()
     {
         metrics = FindFirstObjectByType<GameMetricsSender>();
         cubeDamageable = GetComponent<Damageable>();
-        parentPrefab = transform.parent; // Guardar referencia al prefab padre
+        parentPrefab = transform.parent;
 
         if (cubeDamageable != null)
         {
@@ -29,14 +29,14 @@ public class DestructibleCubeTracker : MonoBehaviour
         }
         else
         {
-            Debug.LogError($"No Damageable component found on {gameObject.name}! " +
-                          "Make sure this script is on the GameObject with Damageable.");
+            //Debug.LogError($"No Damageable component found on {gameObject.name}! " +
+            //              "Make sure this script is on the GameObject with Damageable.");
                         
             cubeDamageable = GetComponentInChildren<Damageable>();
             if (cubeDamageable != null)
             {
                 cubeDamageable.OnDeath.AddListener(OnCubeDestroyed);
-                Debug.Log($"Found Damageable in children, using that.");
+                //Debug.Log($"Found Damageable in children, using that.");
             }
         }
     }

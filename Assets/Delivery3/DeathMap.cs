@@ -8,7 +8,7 @@ public class DeathMap : MonoBehaviour
 {
     private string apiURL = "http://citmalumnes.upc.es/~hugocc2/game_analytics.php";
     
-    [Header("Configuración")]
+    [Header("Configuracion")]
     public KeyCode toggleKey = KeyCode.Alpha1;
     public Color markerColor = Color.red;
     public float markerSize = 0.5f;
@@ -42,7 +42,7 @@ public class DeathMap : MonoBehaviour
         markersContainer.transform.SetParent(transform);
         markersContainer.SetActive(false);
         
-        Debug.Log("Mapa de muertes listo. Presiona '1' para mostrar/ocultar");
+        Debug.Log("DeathMap ready. Tecla '1' para mostrar/ocultar");
     }
     
     void Update()
@@ -69,14 +69,14 @@ public class DeathMap : MonoBehaviour
     
     void ShowDeathMap()
     {
-        Debug.Log("Cargando puntos de muerte...");
+        //Debug.Log("Cargando puntos de muerte");
         markersContainer.SetActive(true);
         StartCoroutine(LoadDeathPointsFromSQL());
     }
     
     void HideDeathMap()
     {
-        Debug.Log("Ocultando mapa");
+        //Debug.Log("Ocultando mapa");
         markersContainer.SetActive(false);
     }
     
@@ -93,8 +93,7 @@ public class DeathMap : MonoBehaviour
             if (request.result == UnityWebRequest.Result.Success)
             {
                 string jsonResponse = request.downloadHandler.text;
-                Debug.Log("Datos recibidos correctamente");
-                
+                                
                 ParseJSONResponse(jsonResponse);
             }
             else
@@ -127,13 +126,13 @@ public class DeathMap : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Respuesta JSON inválida");
+                //Debug.LogWarning("Respuesta JSON invalid");
                 ParseManualJSON(jsonData);
             }
         }
         catch (Exception e)
         {
-            Debug.LogWarning("JsonUtility falló: " + e.Message);
+            //Debug.LogWarning("JsonUtility ha fallado: " + e.Message);
             ParseManualJSON(jsonData);
         }
     }
@@ -201,7 +200,7 @@ public class DeathMap : MonoBehaviour
                     }
                 }
                 
-                Debug.Log($"Creados {markersCreated} marcadores (parseo manual)");
+                //Debug.Log($"Creados {markersCreated} marcadores (parseo manual)");
             }
         }
         catch (Exception e)

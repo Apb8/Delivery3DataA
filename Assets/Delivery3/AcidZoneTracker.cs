@@ -7,12 +7,11 @@ public class AcidZoneTracker : MonoBehaviour
     public string zoneName = "Unknown";
 
     void Start()
-    {
-        // Asegurar tag
+    {        
         if (!gameObject.CompareTag("AcidLake"))
             gameObject.tag = "AcidLake";
 
-        // Asegurar que es trigger
+        // debug asegurar trigger
         Collider collider = GetComponent<Collider>();
         if (collider != null && !collider.isTrigger)
             collider.isTrigger = true;

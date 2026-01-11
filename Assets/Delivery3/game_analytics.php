@@ -9,12 +9,10 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 
-// Si es OPTIONS, terminar
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit(0);
 }
 
-// Conexion a la database
 $servername = "localhost";
 $username = "hugocc2";
 $password = "Vf2hAqU5nxL6";
@@ -26,17 +24,12 @@ if ($conn->connect_error) {
     die(json_encode(["success" => false, "error" => "Database connection failed: " . $conn->connect_error]));
 }
 
-// Obtener datos POST
 $input = $_POST;
 
-// ==============================================
-// ENDPOINT: Registrar muerte del jugador
-// ==============================================
+// ENDPOINT: player death
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($input['metric_type']) && $input['metric_type'] === 'player_death') {
-    
-    // el PHP espera campos directos, pero Unity envia "data" dentro
-    // Necesitamos adaptar la estructura
-    $data = $input['data'] ?? $input; // Compatible con ambas estructuras
+        
+    $data = $input['data'] ?? $input;
     
     $required_fields = ['player_id', 'death_cause', 'position_x', 'position_y', 'position_z'];
     $missing_fields = [];
@@ -60,8 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($input['metric_type']) && $in
     $zone_name = isset($data['zone_name']) ? $conn->real_escape_string($data['zone_name']) : 'unknown';
     $lake_name = isset($data['lake_name']) ? $conn->real_escape_string($data['lake_name']) : null;
     $level_name = isset($data['level_name']) ? $conn->real_escape_string($data['level_name']) : 'unknown';
-    
-    // Insertar muerte (sin lake_name , lo anadimos despues)
+        
     $stmt = $conn->prepare("
         INSERT INTO player_deaths 
         (player_id, death_cause, position_x, position_y, position_z, zone_name, level_name) 
@@ -72,13 +64,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($input['metric_type']) && $in
     
     if ($stmt->execute()) {
         $death_id = $stmt->insert_id;
-        
-        // Si es muerte por acido y tenemos nombre de lago
+                
         if ($death_cause === 'acido' && $lake_name) {
-            // Actualizar tabla acid_lakes si existe
-            updateAcidLakeDeaths($conn, $lake_name, $pos_x, $pos_y, $pos_z, $zone_name);
             
-            // tmb actualizar player_deaths con lake_name
+            updateAcidLakeDeaths($conn, $lake_name, $pos_x, $pos_y, $pos_z, $zone_name);
+                        
             $update_stmt = $conn->prepare("UPDATE player_deaths SET lake_name = ? WHERE id = ?");
             $update_stmt->bind_param("si", $lake_name, $death_id);
             $update_stmt->execute();
@@ -97,9 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($input['metric_type']) && $in
     $stmt->close();
 }
 
-// ==============================================
-// ENDPOINT: Registrar cubo destruido
-// ==============================================
+// ENDPOINT: destructible cubes
 elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($input['metric_type']) && $input['metric_type'] === 'cube_destroyed') {
     
     $data = $input['data'] ?? $input;
@@ -123,8 +111,7 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($input['metric_type']) &&
     $pos_y = floatval($data['position_y']);
     $pos_z = floatval($data['position_z']);
     $zone_name = isset($data['zone_name']) ? $conn->real_escape_string($data['zone_name']) : 'unknown';
-    
-    // Version simplificada: siempre insertar nuevo registro
+        
     $stmt = $conn->prepare("
         INSERT INTO destructible_cubes 
         (cube_type, position_x, position_y, position_z, zone_name) 
@@ -146,9 +133,7 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($input['metric_type']) &&
     $stmt->close();
 }
 
-// ====================================
-// ENDPOINT: Registrar enemigo matado
-// ====================================
+// ENDPOINT: killed enemy
 elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($input['metric_type']) && $input['metric_type'] === 'enemy_killed') {
     
     $data = $input['data'] ?? $input;
@@ -170,8 +155,7 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($input['metric_type']) &&
     $enemy_type = $conn->real_escape_string($data['enemy_type']);
     $time_to_kill = floatval($data['time_to_kill']);
     $damage_dealt = isset($data['damage_dealt']) ? floatval($data['damage_dealt']) : 0;
-    
-    // Version simplificada: siempre insertar nuevo registro
+        
     $stmt = $conn->prepare("
         INSERT INTO enemy_stats 
         (enemy_type, time_to_kill, damage_dealt) 
@@ -193,12 +177,9 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($input['metric_type']) &&
     $stmt->close();
 }
 
-// ==============================
-// ENDPOINTS GET PARA ANALISIS
-// ===============================
+// ENDPOINTS GET
 elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    
-    // Endpoint: Puntos con mas muertes (heatmap)
+        
     if (isset($_GET['get_death_points'])) {
         $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 50;
         $zone = isset($_GET['zone']) ? $conn->real_escape_string($_GET['zone']) : null;
@@ -242,8 +223,7 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
             "death_points" => $data
         ]);
     }
-    
-    // Endpoint: Muertes por causa
+        
     elseif (isset($_GET['get_death_causes'])) {
         $query = "
             SELECT 
@@ -266,8 +246,7 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
             "death_causes" => $data
         ]);
     }
-    
-    // Endpoint: Cubos destruidos
+        
     elseif (isset($_GET['get_cube_positions_grouped'])) {
     $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 100;
     $threshold = isset($_GET['threshold']) ? floatval($_GET['threshold']) : 2.0; // Distancia para agrupar
@@ -304,8 +283,7 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
         "note" => "Agrupado por posición redondeada, sumando todas las destrucciones"
     ]);
 }
-        
-        // Total general
+                
         $query_total = "SELECT COUNT(*) as total_cubes, SUM(destruction_count) as total_destructions FROM destructible_cubes";
         $result_total = $conn->query($query_total);
         $total = $result_total->fetch_assoc();
@@ -317,10 +295,9 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
             "cube_type_stats" => $cube_stats
         ]);
     }
-    
-    // Endpoint: Enemigos
+        
     elseif (isset($_GET['get_enemy_stats'])) {
-        // Enemigos por tipo
+        
         $query = "
             SELECT 
                 enemy_type,
@@ -343,10 +320,9 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
             "enemy_stats" => $enemy_stats
         ]);
     }
-    
-    // Endpoint: Muertes en lagos de acido
+        
     elseif (isset($_GET['get_acid_lake_deaths'])) {
-        // Primero verificar si la tabla existe
+        
         $table_check = $conn->query("SHOW TABLES LIKE 'acid_lakes'");
         
         if ($table_check->num_rows > 0) {
@@ -373,7 +349,7 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 "acid_lakes" => $lakes
             ]);
         } else {
-            // Si no existe la tabla, usar player_deaths
+            
             $query = "
                 SELECT 
                     lake_name,
@@ -398,24 +374,19 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
             ]);
         }
     }
-    
-    // Endpoint: Dashboard simple
+        
     elseif (isset($_GET['get_dashboard'])) {
         $dashboard = [];
-        
-        // Muertes totales
+                
         $result = $conn->query("SELECT COUNT(*) as total FROM player_deaths");
         $dashboard['total_deaths'] = $result->fetch_assoc()['total'] ?? 0;
-        
-        // Cubos destruidos
+                
         $result = $conn->query("SELECT COUNT(*) as total FROM destructible_cubes");
         $dashboard['total_cubes'] = $result->fetch_assoc()['total'] ?? 0;
-        
-        // Enemigos eliminados
+                
         $result = $conn->query("SELECT COUNT(*) as total FROM enemy_stats");
         $dashboard['total_enemies_killed'] = $result->fetch_assoc()['total'] ?? 0;
-        
-        // ultimas muertes
+                
         $result = $conn->query("
             SELECT death_cause, zone_name, timestamp 
             FROM player_deaths 
@@ -433,8 +404,7 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
             "timestamp" => date('Y-m-d H:i:s')
         ]);
     }
-    
-    // Endpoint: Health check
+        
     else {
         echo json_encode([
             "success" => true,
@@ -455,15 +425,12 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
 }
 
-// =======================
-// FUNCIONES AUXILIARES
-// =======================
+// FUNC AUX
 
 function updateAcidLakeDeaths($conn, $lake_name, $pos_x, $pos_y, $pos_z, $zone_name) {
     $lake_name = $conn->real_escape_string($lake_name);
     $zone_name = $conn->real_escape_string($zone_name);
-    
-    // Primero verificar si la tabla existe
+        
     $table_check = $conn->query("SHOW TABLES LIKE 'acid_lakes'");
     
     if ($table_check->num_rows > 0) {
@@ -476,6 +443,5 @@ function updateAcidLakeDeaths($conn, $lake_name, $pos_x, $pos_y, $pos_z, $zone_n
     }
 }
 
-// Cerrar conexion
 $conn->close();
 ?>

@@ -28,7 +28,7 @@ public class PlayerDeathTracker : MonoBehaviour
             Debug.Log($"Death: {deathCause} at {zone}");
         }
 
-        // Si muere en lago acido, registrar específ.
+        // Si muere en lago acido, registrar especif.
         if (deathCause == "acido" && !string.IsNullOrEmpty(DeathCauseTracker.lastAcidLake))
         {
             metrics.RecordAcidLakeDeath(DeathCauseTracker.lastAcidLake, transform.position, zone);
